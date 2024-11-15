@@ -13,7 +13,7 @@ public SlidePuzzle() {
         initializeBoard();
         shuffleBoard();
     }
-    private void initializeBoard() {
+private void initializeBoard() {
         int num = 1;
         for (int row = 0; row < SIZE; row++) {
             for (int col = 0; col < SIZE; col++) {
@@ -25,7 +25,7 @@ public SlidePuzzle() {
         emptyRow = SIZE - 1;
         emptyCol = SIZE - 1;
     }
-    private void shuffleBoard() {
+private void shuffleBoard() {
         List<Integer> numbers = Arrays.asList(
                 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 0
         );
@@ -43,7 +43,7 @@ public SlidePuzzle() {
             }
         }
     }
-    public void displayBoard() {
+public void displayBoard() {
         for (int row = 0; row < SIZE; row++) {
             for (int col = 0; col < SIZE; col++) {
                 if (board[row][col] == 0) {
@@ -55,7 +55,7 @@ public SlidePuzzle() {
             System.out.println();
         }
     }
-    public boolean move(int value) {
+public boolean move(int value) {
         int row = -1;
         int col = -1;
         for (int r = 0; r < SIZE; r++) {
@@ -78,7 +78,7 @@ public SlidePuzzle() {
         }
         return false;
     }
-    public boolean isSolved() {
+public boolean isSolved() {
         int num = 1;
         for (int row = 0; row < SIZE; row++) {
             for (int col = 0; col < SIZE; col++) {
@@ -93,7 +93,7 @@ public SlidePuzzle() {
         }
         return true;
     }
-    public static void main(String[] args) {
+public static void main(String[] args) {
         SlidePuzzle puzzle = new SlidePuzzle();
         puzzle.displayBoard();
 
