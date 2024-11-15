@@ -58,7 +58,7 @@
                 }
                 this.tiles.push(0); // Empty space
             }
-            createImagePieces() { const imageUrl = 'sonicandfriends.jpg'; // Update with the path to image for (let row = 0; row < this.size; row++) { for (let col = 0; col < this.size; col++) { const xPos = -(col * 100); const yPos = -(row * 100); this.imagePieces.push(`background-image: url('${imageUrl}'); background-position: ${xPos}px ${yPos}px;`); } }
+            createImagePieces() { const imageUrl = 'path/to/sonicandfriends.jpg'; // Update with the path to image for (let row = 0; row < this.size; row++) { for (let col = 0; col < this.size; col++) { const xPos = -(col * 100); const yPos = -(row * 100); this.imagePieces.push(`background-image: url('${imageUrl}'); background-position: ${xPos}px ${yPos}px;`); } }
             shuffleBoard() {
                 for (let i = this.tiles.length - 1; i > 0; i--) {
                     const j = Math.floor(Math.random() * (i + 1));
