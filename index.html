@@ -58,13 +58,13 @@
                 }
                 this.tiles.push(0); // Empty space
             }
-            createImagePieces() { const imageUrl = 'sonicandfriends.jpg'; // Update with the path to image
+            createImagePieces() { 
+                const imageUrl = 'sonicandfriends.jpg'; // Update with the path to image
                 for (let row = 0; row < this.size; row++) { 
                     for (let col = 0; col < this.size; col++) { 
                         const xPos = -(col * 100); 
                         const yPos = -(row * 100); 
-                        this.imagePieces.push(`background-image: url('${sonicandfriends.jpg}'); 
-                        background-position: ${xPos}px ${yPos}px;`);
+                        this.imagePieces.push(`background-image: url('${imageUrl}'); background-position: ${xPos}px ${yPos}px;`);
                         } 
                 }
             shuffleBoard() {
