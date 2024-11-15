@@ -20,14 +20,11 @@
             gap: 5px;
         }
         .tile {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #3498db;
-            color: white;
-            font-size: 24px;
+            display: block;
+            width: 100%;
+            height: 100%;
+            background-size: 400px 400px;
             cursor: pointer;
-            border-radius: 5px;
             user-select: none;
         }
         .tile.empty {
@@ -46,41 +43,46 @@
                 this.size = size;
                 this.tiles = [];
                 this.container = document.querySelector('.container');
+                this.imagePieces = [];
                 this.initializeBoard();
                 this.shuffleBoard();
                 this.renderBoard();
             }
 
             initializeBoard() {
-                let num = 1;
                 for (let i = 0; i < this.size * this.size - 1; i++) {
-                    this.tiles.push(num++);
+                    this.tiles.push(i + 1);
                 }
                 this.tiles.push(0); // Empty space
+                this.createImagePieces();
             }
-            createImagePieces() { 
-                const imageUrl = 'images/sonicandfriends.jpg'; // Update with the path to image
-                for (let row = 0; row < this.size; row++) { 
-                    for (let col = 0; col < this.size; col++) { 
-                        const xPos = -(col * 100); 
-                        const yPos = -(row * 100); 
-                        this.imagePieces.push(`background-image: url('${imageUrl}');
-                        background-position: ${xPos}px ${yPos}px;`);
-                        } 
+
+            createImagePieces() {
+                const imageUrl = 'images/sonicandfriends.jpg'; // Path to your image
+                for (let row = 0; row < this.size; row++) {
+                    for (let col = 0; col < this.size; col++) {
+                        const xPos = -(col * 100);
+                        const yPos = -(row * 100);
+                        this.imagePieces.push(`background-image: url('${imageUrl}'); background-position: ${xPos}px ${yPos}px;`);
                     }
+                }
             }
+
             shuffleBoard() {
                 for (let i = this.tiles.length - 1; i > 0; i--) {
                     const j = Math.floor(Math.random() * (i + 1));
                     [this.tiles[i], this.tiles[j]] = [this.tiles[j], this.tiles[i]];
                 }
             }
+
             renderBoard() {
                 this.container.innerHTML = '';
                 this.tiles.forEach((tile, index) => {
                     const tileElement = document.createElement('div');
                     tileElement.className = 'tile' + (tile === 0 ? ' empty' : '');
-                    tileElement.textContent = tile !== 0 ? tile : '';
+                    if (tile !== 0) {
+                        tileElement.style.cssText = this.imagePieces[tile - 1];
+                    }
                     tileElement.addEventListener('click', () => this.moveTile(index));
                     this.container.appendChild(tileElement);
                 });
